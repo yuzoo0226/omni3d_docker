@@ -41,9 +41,10 @@ RUN apt update && \
     DEBIAN_FRONTEND=noninteractive apt install -y python3-pip && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --no-cache-dir nvidia-cudnn-cu11 && \
-    pip3 install --no-cache-dir torch==2.1.0+cu118 torchvision==0.16.0+cu118 torchaudio==2.1.0+cu118 -f https://download.pytorch.org/whl/torch_stable.html && \
-    pip3 install --no-cache-dir --extra-index-url https://miropsota.github.io/torch_packages_builder pytorch3d==0.7.7+pt2.1.0cu118
+# RUN pip3 install --no-cache-dir nvidia-cudnn-cu11 && \
+RUN pip3 install --no-cache-dir torch==2.1.0+cu118 torchvision==0.16.0+cu118 torchaudio==2.1.0+cu118 -f https://download.pytorch.org/whl/torch_stable.html && \
+RUN pip3 install networkx==3.1
+RUN pip3 install --no-cache-dir --no-deps --extra-index-url https://miropsota.github.io/torch_packages_builder pytorch3d==0.7.7+pt2.1.0cu118
 
 RUN pip3 install --no-cache-dir 'git+https://github.com/facebookresearch/detectron2.git'
 
