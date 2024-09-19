@@ -55,8 +55,9 @@ RUN pip3 install --no-cache-dir open3d==0.16.0
 
 RUN pip3 install --no-cache-dir datasetutils && \
     pip3 install --no-cache-dir transforms3d && \
-    pip3 install --no-cache-dir numpy==1.24.1
-
+    pip3 install --no-cache-dir numpy==1.24.1 && \
+    pip3 install --no-cache-dir opencv-python && \
+    pip3 install --no-cache-dir 'git+https://github.com/TamlabHSRProject/tamlib.git'
 
 RUN curl -LO https://github.com/NVIDIA/cub/archive/1.10.0.tar.gz && \
     tar xzf 1.10.0.tar.gz && \
