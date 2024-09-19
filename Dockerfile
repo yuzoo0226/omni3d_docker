@@ -42,16 +42,21 @@ RUN apt update && \
     rm -rf /var/lib/apt/lists/*
 
 # RUN pip3 install --no-cache-dir nvidia-cudnn-cu11 && \
-RUN pip3 install --no-cache-dir torch==2.1.0+cu118 torchvision==0.16.0+cu118 torchaudio==2.1.0+cu118 -f https://download.pytorch.org/whl/torch_stable.html && \
 RUN pip3 install networkx==3.1
+RUN pip3 install --no-cache-dir torch==2.1.0+cu118 torchvision==0.16.0+cu118 torchaudio==2.1.0+cu118 -f https://download.pytorch.org/whl/torch_stable.html
 RUN pip3 install --no-cache-dir --no-deps --extra-index-url https://miropsota.github.io/torch_packages_builder pytorch3d==0.7.7+pt2.1.0cu118
 
 RUN pip3 install --no-cache-dir 'git+https://github.com/facebookresearch/detectron2.git'
 
+RUN pip3 install --upgrade pip
+
+RUN pip3 install --ignore-installed PyYAML blinker
+RUN pip3 install --no-cache-dir open3d==0.16.0
+
 RUN pip3 install --no-cache-dir datasetutils && \
     pip3 install --no-cache-dir transforms3d && \
-    pip3 install --no-cache-dir open3d==0.16.0 && \
     pip3 install --no-cache-dir numpy==1.24.1
+
 
 RUN curl -LO https://github.com/NVIDIA/cub/archive/1.10.0.tar.gz && \
     tar xzf 1.10.0.tar.gz && \
